@@ -46,6 +46,22 @@
       <div class="col-md-8">
         <div id="domicilios">
           <h4>Domicilio</h4>
+          @if (old('domicilios'))
+            @foreach (old('domicilios') as $key => $domicilio)
+              <div class="card" style="margin-bottom:1em;">
+                <div class="card-body">
+                  <div class="form-group">
+                      {!! Form::label("domicilios[$key][alias]", 'Alias:') !!}
+                      {!! Form::text("domicilios[$key][alias]", NULL, ['class' => 'form-control form-control-sm date']) !!}
+                   </div>
+                   <div class="form-group">
+                       {!! Form::label("domicilios[$key][description]", 'Descripción:') !!}
+                       {!! Form::text("domicilios[$key][description]", NULL, ['class' => 'form-control form-control-sm date']) !!}
+                   </div>
+                </div>
+              </div>
+            @endforeach
+          @else
             <div class="card" style="margin-bottom:1em;">
               <div class="card-body">
                 <div class="form-group">
@@ -58,6 +74,7 @@
                  </div>
               </div>
             </div>
+          @endif
         </div>
         <div class="">
           <button type="button" id="addDomicilio" class="btn btn-sm btn-light">
@@ -73,7 +90,11 @@
 
 @section('javascript')
   <script type="text/javascript">
-    var cont = 1;
+    @if (old('domicilios'))
+      var cont = {{ count(old('domicilios')) }}
+    @else
+      var cont = 1;
+    @endif
     var formulario =
                      '<div class="card" style="margin-bottom:1em;">' +
                      '<div class="card-body">' +
