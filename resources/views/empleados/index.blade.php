@@ -2,9 +2,16 @@
 
 @section('content')
   <div class="">
-    <a href="{{ route ('empleados.create')}}" class="btn btn-sm btn-success">Agregar nuevo</a>
+    <div class="text-right">
+      <div style="margin-bottom: .5em">
+        <a href="{{ route ('empleados.create')}}" class="btn btn-sm btn-success">
+          <i class="fa fa-plus" aria-hidden="true"></i>
+          Agregar nuevo
+        </a>
+      </div>
+    </div>
     @if ($empleados)
-      <table class="table">
+      <table class="table table-bordered table-hover">
         <thead>
           <tr>
             <th>Nombre</th>

@@ -2,12 +2,14 @@
 
 @section('content')
   <h2>Nuevo empleado</h2>
-  @if ($errors)
-    <ul>
-      @foreach ($errors->all() as $error)
-        <li>{{$error}}</li>
-      @endforeach
-    </ul>
+  @if ($errors->any())
+    <div class="alert alert-danger" role="alert">
+      <ul>
+        @foreach ($errors->all() as $error)
+          <li>{{$error}}</li>
+        @endforeach
+      </ul>
+    </div>
   @endif
   {!! Form::open(['method' => 'POST', 'route' => 'empleados.store']) !!}
     {{ csrf_field() }}
@@ -30,15 +32,16 @@
             </div>
           </div>
         </div>
-
-        <a href="{{route('empleados.index')}}" class="btn btn-sm btn-secondary">
-            <i class="fi-list"></i>
-            Regresar al listado
-        </a>
-        <button type="submit" class="btn btn-sm btn-primary">
-            <i class="fi-save"></i>
-            Guardar
-        </button>
+        <div style="margin-top:1em;">
+          <a href="{{route('empleados.index')}}" class="btn btn-sm btn-secondary">
+              <i class="fa fa-list" aria-hidden="true"></i>
+              Ir al listado
+          </a>
+          <button type="submit" class="btn btn-sm btn-primary">
+            <i class="fa fa-floppy-o" aria-hidden="true"></i>
+              Guardar
+          </button>
+        </div>
       </div>
       <div class="col-md-8">
         <div id="domicilios">
@@ -57,7 +60,10 @@
             </div>
         </div>
         <div class="">
-          <button type="button" id="addDomicilio" class="btn btn-sm btn-info">Agregar otra dirección</button>
+          <button type="button" id="addDomicilio" class="btn btn-sm btn-light">
+            <i class="fa fa-plus" aria-hidden="true"></i>
+            Agregar otra dirección
+          </button>
         </div>
       </div>
     </div>
@@ -82,7 +88,7 @@
                      '</div>'
                      '</div>'
                      ;
-                     
+
     $('#addDomicilio').on('click', function(){
       $('#domicilios').append(replaceAll(formulario, '__index__', cont++));
     })

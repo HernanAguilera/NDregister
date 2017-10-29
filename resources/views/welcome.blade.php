@@ -49,6 +49,11 @@
                 font-size: 84px;
             }
 
+            .title > a{
+              text-decoration: none;
+              color: #636b6f;
+            }
+
             .links > a {
                 color: #636b6f;
                 padding: 0 25px;
@@ -79,11 +84,12 @@
 
             <div class="content">
                 <div class="title m-b-md">
-                    Laravel
+                  Listado de Empleados
                 </div>
-
                 <div class="links">
-                    <a href="{{ route('empleados.index') }}">Listado de Empleados</a>
+                  <a href="{{ route('empleados.index') }}">Para empezar haz click aquí</a>
+                  <br>
+                  <p>Laravel</p>
                 </div>
             </div>
         </div>
